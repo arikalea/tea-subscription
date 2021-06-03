@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Update subscription request' do
   before :each do
     @customer = create(:customer)
-    @subscription = create(:subscription, customer: @customer)
+    @subscription = create(:subscription, customer: @customer, status: :active)
   end
 
   describe 'happy path' do
