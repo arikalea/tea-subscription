@@ -4,8 +4,8 @@ RSpec.describe 'Create a pet request' do
   before :each do
     @customer = create(:customer)
   end
-  describe 'happy path' do
 
+  describe 'happy path' do
     it 'can create a subscription for a user' do
       sub_params = { customer_id: @customer.id,
                      title: 'All the Tea',
@@ -17,7 +17,7 @@ RSpec.describe 'Create a pet request' do
 
       post "/api/v1/customers/#{@customer.id}/subscriptions", headers: headers, params: sub_params.to_json
 
-      new_sub = Subscription.last
+      # new_sub = Subscription.last
       new_sub_json = JSON.parse(response.body, symbolize_names: true)
 
       expect(response).to be_successful
@@ -47,7 +47,7 @@ RSpec.describe 'Create a pet request' do
 
       post "/api/v1/customers/#{@customer.id}/subscriptions", headers: headers, params: sub_params.to_json
 
-      new_sub = Subscription.last
+      # new_sub = Subscription.last
       new_sub_json = JSON.parse(response.body, symbolize_names: true)
 
       expect(response).to be_successful
