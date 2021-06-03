@@ -7,11 +7,12 @@ RSpec.describe 'Update subscription request' do
   end
 
   describe 'happy path' do
+
     it 'returns updated subscription' do
       put "/api/v1/customers/#{@customer.id}/subscriptions/#{@subscription.id}?status=cancelled"
 
       subscription_json = JSON.parse(response.body, symbolize_names: true)
-      # require "pry";binding.pry
+
       expect(response).to be_successful
       expect(response.status).to eq(200)
       expect(subscription_json).to have_key(:data)
@@ -27,5 +28,20 @@ RSpec.describe 'Update subscription request' do
       expect(subscription_json[:data][:attributes][:status]).to eq('cancelled')
       expect(subscription_json[:data][:attributes][:frequency]).to eq(@subscription[:frequency].to_s)
     end
+  end
+
+  describe 'sad path' do
+    # it 'unsuccessful response without require attributes' do
+    #   status_params = {active: nil}
+    #
+    #   put "/api/v1/customers/#{@customer.id}/subscriptions/#{@subscription.id}", params: status_params.to_json
+    #
+    #   bad_request_json = JSON.parse(response.body, symbolize_names: true)
+    #
+    #   expect(response).to_not be_successful
+    #   expect(response.status).to eq(400)
+    #   expect(bad_request_json[:error]).to eq("Title can't be blank")
+    #   expect(@subscription[:status]).to eq('active')
+    # end
   end
 end

@@ -1,5 +1,5 @@
 class Api::V1::SubscriptionsController < ApplicationController
-  # before_action :validate_params, only: :create
+  before_action :validate_params, only: :create
 
   def index
     @customer = Customer.find(params[:customer_id])
@@ -37,7 +37,8 @@ class Api::V1::SubscriptionsController < ApplicationController
   def update_sub_params
     params.permit(:status, :frequency)
   end
-  # def validate_params
-  #   render json: { error: 'Must provide request body' }, status: :bad_request if request.body.read.blank?
-  # end
+  
+  def validate_params
+    render json: { error: 'Must provide request body' }, status: :bad_request if request.body.read.blank?
+  end
 end
