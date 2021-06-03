@@ -1,6 +1,15 @@
 class Api::V1::SubscriptionsController < ApplicationController
   before_action :validate_params, only: :create
 
+  def index
+    @customer = Customer.find(params[:customer_id])
+    # if @customer
+      render json: SubscriptionSerializer.new(@customer.subscriptions), status: :ok
+    # else
+      # render json: { error: @customer.errors.full_messages.to_sentence }, status: :bad_request
+    # end
+  end
+
   def create
     subscription = Subscription.create(subscription_params)
     if subscription.save
@@ -18,5 +27,5 @@ class Api::V1::SubscriptionsController < ApplicationController
 
   def validate_params
     render json: { error: 'Must provide request body' }, status: :bad_request if request.body.read.blank?
-end
+  end
 end
