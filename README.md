@@ -42,6 +42,6 @@ To check out my in-depth test suite, run:
 
 | HTTP verbs | Paths  | Used for | Output |
 | ---------- | ------ | -------- | ------:|
-| GET | /api/v1/customer/:customer_id/subscriptions | Get all subscriptions for a user | json |
-| POST | /api/v1/customer/:customer_id/subscriptions | Create a new subscription for a user | json |
-| PUT | /api/v1/customer/:customer_id/subscriptions/:subscription_id | Update status on subscription | json
+| GET | /api/v1/customers/:customer_id/subscriptions | Get all subscriptions for a user | json |
+| POST | /api/v1/customers/:customer_id/subscriptions | Create a new subscription for a user | json |
+| PUT | /api/v1/customers/:customer_id/subscriptions/:subscription_id | Update status on subscription | json
