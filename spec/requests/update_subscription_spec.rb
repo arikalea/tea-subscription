@@ -31,17 +31,17 @@ RSpec.describe 'Update subscription request' do
   end
 
   describe 'sad path' do
-    # it 'unsuccessful response without require attributes' do
-    #   status_params = {active: nil}
-    #
-    #   put "/api/v1/customers/#{@customer.id}/subscriptions/#{@subscription.id}", params: status_params.to_json
-    #
-    #   bad_request_json = JSON.parse(response.body, symbolize_names: true)
-    #
-    #   expect(response).to_not be_successful
-    #   expect(response.status).to eq(400)
-    #   expect(bad_request_json[:error]).to eq("Title can't be blank")
-    #   expect(@subscription[:status]).to eq('active')
-    # end
+    it 'unsuccessful response without require attributes' do
+      update_params = { status: nil }
+
+      put "/api/v1/customers/#{@customer.id}/subscriptions/#{@subscription.id}", params: update_params.to_json
+
+      bad_request_json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
+      expect(bad_request_json[:error]).to eq("Validation failed: Status can't be blank")
+      expect(@subscription[:status]).to eq('active')
+    end
   end
 end

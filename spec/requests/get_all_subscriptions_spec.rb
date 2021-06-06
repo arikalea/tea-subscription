@@ -35,14 +35,14 @@ RSpec.describe 'Get subscriptions request' do
   end
 
   describe 'sad path' do
-    # it 'unsuccessful response when incorrect customer id is provided' do
-    #   get "/api/v1/customers/1/subscriptions"
-    #
-    #   bad_request_json = JSON.parse(response.body, symbolize_names: true)
-    #
-    #   expect(response).to_not be_successful
-    #   expect(response.status).to eq(404)
-    #   expect(bad_request_json).to eq({error: "Couldn't find Customer with 'id'=1"})
-    # end
+    it 'unsuccessful response when incorrect customer id is provided' do
+      get "/api/v1/customers/1/subscriptions"
+
+      bad_request_json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
+      expect(bad_request_json).to eq({error: "Couldn't find Customer with 'id'=1"})
+    end
   end
 end
