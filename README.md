@@ -5,8 +5,8 @@
 - [Getting Started](#getting-started)
 - [Setup](#setup)
 - [Running the tests](#running-the-tests)
-- [Database Schema](#database-schema)
 - [Endpoint Documentation](#endpoint-documentation)
+- [Built With](#built-with)
 
 ## About
 
@@ -45,3 +45,10 @@ To check out my in-depth test suite, run:
 | GET | /api/v1/customers/:customer_id/subscriptions | Get all subscriptions for a user | json |
 | POST | /api/v1/customers/:customer_id/subscriptions | Create a new subscription for a user | json |
 | PUT | /api/v1/customers/:customer_id/subscriptions/:subscription_id | Update status on subscription | json
+
+## Built With
+- Ruby
+- Rails
+- RSpec
+- FactoryBot
+- Faker
